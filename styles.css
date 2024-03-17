@@ -4,10 +4,11 @@ body {
 }
 
 header {
-    background-image: url(file:///C:/Users/hp/Desktop/FADAREC.github.io/cover-image.jpg);
+    background-image: url(cover-image.jpg);
     background-size: cover;
-    color: white;
+    color: whitesmoke;
     padding: 100px 0;
+
     text-align: center;
 }
 
@@ -40,6 +41,31 @@ section {
     padding: 20px 0;
     text-align: center;
 }
+#features {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.feature {
+    margin-bottom: 30px;
+}
+
+.feature img {
+    width: 200px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.feature h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 16px;
+    color: #666;
+}
+
 
 .btn {
     display: inline-block;
