@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Caleb Fadare — Backend Engineer</title>
+<meta name="description" content="Backend engineer who ships production systems. Lagos, Nigeria. Available for remote work."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&display=swap" rel="stylesheet"/>
+
+<script>
+/* ═══════════════════════════════════════════════
+   CONFIG — ONLY EDIT THIS BLOCK TO UPDATE SITE
+   ═══════════════════════════════════════════════ */
+const ME = {
+  name: "Caleb Fadare",
+  role: "Backend Engineer",
+  location: "Lagos, Nigeria",
+  available: true,
+  availableSlots: 2,
+  email: "caleb001f@gmail.com",
+  github: "https://github.com/FADAREC",
+  whatsapp: "+234 903 197 0846",
+  headline: "I wrote automation that still runs at a Lagos bank today.",
+  subheadline: "I can do the same for you.",
+  about: [
+    "If you need someone to build a proof of concept, there are faster options.",
+    "If you need production-grade systems that handle real users, real data, and real pressure — read on.",
+    "I started with C and shell scripting at ALX Africa, learning how systems work at the level most developers never go. Interned at Investment One Financial Services and built automation that's still running there today. I've shipped a full laundry management platform, an e-commerce POS, a printer monitoring system, and I'm currently building a mobile invoicing app in Go.",
+    "I understand deadlines, enterprise environments, and what it means when your code fails at 2am."
+  ],
+  stats: [
+    { value: 80, suffix: "%", label: "Manual ops cut for businesses handling fleets of printers" },
+    { value: 4, suffix: "", label: "Live systems in production right now" },
+    { value: 2, suffix: "+", label: "Years of real production experience" },
+    { value: 6, suffix: "", label: "Projects shipped end-to-end" }
+  ],
+  projects: [
+    {
+      num: "01",
+      name: "TonerTrack",
+      problem: "Found companies that manually checked 20+ printers for toner regularly(some daily, some weekly). And that for me translated to wasted hours.",
+      solution: "Real-time monitoring system with smart threshold alerts. The system flags issues before they become problems. No more manual rounds.",
+      result: "80% reduction in monitoring work. Still running in production.",
+      tech: ["FastAPI", "PostgreSQL", "React"],
+      live: "https://print-track-backend.onrender.com/docs",
+      status: "live"
+    },
+    {
+      num: "02",
+      name: "Caperberry Fabric Care",
+      problem: "Laundry businesses track orders on paper and WhatsApp. Mistakes happen, customers get frustrated, owners can't see what's happening.",
+      solution: "Full management platform. Customers book pickups online. Owners see every order move through every stage on a live dashboard.",
+      result: "End-to-end. Deployed. Used by a real business.",
+      tech: ["Node.js", "TypeScript", "Express", "PostgreSQL", "React"],
+      live: "https://caperberry-fabric-care.onrender.com",
+      status: "live"
+    },
+    {
+      num: "03",
+      name: "The Lagos Store",
+      problem: "Small fashion retailers run separate systems for online and in-person sales. Inventory gets out of sync. Revenue gets lost.",
+      solution: "E-commerce platform with a built-in Point-of-Sale module. Online and physical inventory stay in sync in real time.",
+      result: "Production-ready. Backend fully persistent.",
+      tech: ["React", "Express", "PostgreSQL", "Zustand", "Drizzle ORM"],
+      live: null,
+      status: "complete"
+    },
+    {
+      num: "04",
+      name: "Mobile Invoicing App",
+      problem: "Small businesses in Nigeria send invoices on WhatsApp — no tracking, no reminders, no PDF. Money gets lost in threads.",
+      solution: "Complete mobile invoicing system. Create, track, remind, export PDF. Clean Go API behind it.",
+      result: "Currently building.",
+      tech: ["Flutter", "Go", "PostgreSQL"],
+      live: null,
+      status: "building"
+    }
+  ],
+  skills: {
+    "Languages": ["TypeScript", "JavaScript", "Python", "Go", "PHP", "SQL", "C"],
+    "Frameworks": ["Node.js / Express", "FastAPI", "Laravel", "Flutter"],
+    "Databases": ["PostgreSQL", "MySQL", "Microsoft SQL Server"],
+    "Tools": ["Docker", "Git", "Drizzle ORM", "Postman", "REST APIs"]
+  },
+  experience: [
+    {
+      period: "Jul – Oct 2025",
+      company: "Thels Impact Consulting",
+      role: "Backend Developer",
+      location: "Remote",
+      highlight: "Custom LMS with auth, workflow logic, and admin tools for HR use"
+    },
+    {
+      period: "Aug 2024 – Mar 2025",
+      company: "Investment One Financial Services",
+      role: "Backend & IT Support Intern",
+      location: "Lagos",
+      highlight: "Built enterprise services + Python automation that cut toner monitoring by 80%"
+    },
+    {
+      period: "Mar 2023 – Apr 2024",
+      company: "ALX Africa",
+      role: "Software Engineering Intern",
+      location: "Remote",
+      highlight: "Systems engineering in C, built a UNIX shell from scratch with a 4-person team"
+    }
+  ]
+};
+/* ═══════════════════════════════════════════════
+   END CONFIG
+   ═══════════════════════════════════════════════ */
+</script>
+
+<style>
+:root {
+  --ink: #0e0d0c;
+  --paper: #f5f0e8;
+  --paper2: #ede8df;
+  --cream: #e8e2d6;
+  --muted: #8a8070;
+  --faint: #c5bfb2;
+  --accent: #c84b2f;
+  --accent2: #2a6b4a;
+  --mono: 'DM Mono', monospace;
+  --serif: 'Fraunces', serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--mono);
+  cursor: none;
+  overflow-x: hidden;
+}
+
+/* ── CURSOR ─────────────────────────────── */
+#cur {
+  position: fixed; top: 0; left: 0;
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width .25s ease, height .25s ease, background .25s ease, border-radius .25s ease;
+  mix-blend-mode: multiply;
+}
+#cur.big { width: 40px; height: 40px; background: rgba(200,75,47,0.12); border: 1px solid var(--accent); }
+#cur.text-mode { width: 2px; height: 24px; border-radius: 1px; background: var(--accent); }
+
+/* ── LOADER ─────────────────────────────── */
+#loader {
+  position: fixed; inset: 0;
+  background: var(--ink);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 8vw;
+  transition: opacity .7s ease, transform .7s ease;
+}
+#loader.out { opacity: 0; transform: translateY(-4px); pointer-events: none; }
+.loader-name {
+  font-family: var(--serif);
+  font-size: clamp(48px, 10vw, 120px);
+  font-weight: 900;
+  color: var(--paper);
+  line-height: 1;
+  overflow: hidden;
+}
+.loader-name span {
+  display: block;
+  transform: translateY(110%);
+  transition: transform .8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.loader-name span.in { transform: translateY(0); }
+.loader-sub {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity .5s ease .6s;
+}
+.loader-sub.in { opacity: 1; }
+.loader-bar-wrap {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: rgba(255,255,255,.08);
+}
+.loader-bar {
+  height: 100%;
+  background: var(--accent);
+  width: 0;
+  transition: width 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── NAV ─────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  background-color: #322;
+  padding: 20px 6vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+nav.show { opacity: 1; }
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+.nav-links a {
+  font-size: 11px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--ink); }
+.avail-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--accent2);
+  background: rgba(42,107,74,.08);
+  border: 1px solid rgba(42,107,74,.2);
+  padding: 5px 12px;
+  border-radius: 100px;
+}
+.avail-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent2);
+  animation: blink 2.5s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* ── HERO ─────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  padding: 18vh 6vw 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  border-bottom: 1px solid var(--cream);
+}
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px; height: 1px;
+  background: var(--faint);
+}
+.hero-headline {
+  font-family: var(--serif);
+  font-size: clamp(38px, 6.5vw, 96px);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -.02em;
+  max-width: 14ch;
+  margin-bottom: 20px;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-sub {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 60px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.1;
+  margin-bottom: 52px;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.btn {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 28px;
+  border: 1px solid;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all .2s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-fill {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.btn-fill:hover { background: var(--accent); border-color: var(--accent); }
+.btn-out {
+  background: transparent;
+  color: var(--muted);
+  border-color: var(--faint);
+}
+.btn-out:hover { border-color: var(--ink); color: var(--ink); }
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 4vw; right: 6vw;
+  writing-mode: vertical-rl;
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--faint);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.scroll-tick {
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, transparent, var(--faint));
+}
+
+/* ── PROOF STRIP ────────────────────────── */
+#proof {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--cream);
+}
+.proof-cell {
+  padding: 48px 6vw;
+  border-right: 1px solid var(--cream);
+}
+.proof-cell:last-child { border-right: none; }
+.proof-num {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.proof-num .suf { color: var(--accent); }
+.proof-label {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 22ch;
+}
+
+/* ── WORK ─────────────────────────────────── */
+#work { border-bottom: 1px solid var(--cream); }
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 52px 6vw 0;
+  border-bottom: 1px solid var(--cream);
+  padding-bottom: 24px;
+}
+.section-label {
+  font-size: 11px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.section-count { font-size: 11px; color: var(--faint); }
+.project {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--cream);
+  padding: 56px 6vw;
+  transition: background .2s;
+  cursor: default;
+}
+.project:hover { background: var(--paper2); }
+.project-num {
+  font-family: var(--serif);
+  font-size: 11px;
+  color: var(--faint);
+  padding-top: 4px;
+  font-style: italic;
+}
+.project-left { padding-right: 48px; border-right: 1px solid var(--cream); }
+.project-name {
+  font-family: var(--serif);
+  font-size: clamp(22px, 3vw, 38px);
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+.project-story { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.story-row { display: flex; gap: 12px; align-items: flex-start; }
+.story-tag {
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: var(--muted);
+  padding: 3px 8px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.story-tag.problem { background: var(--accent); }
+.story-tag.result { background: var(--accent2); }
+.story-text { font-size: 13px; line-height: 1.7; color: var(--muted); }
+.story-text strong { color: var(--ink); font-weight: 500; }
+.project-right { padding-left: 48px; display: flex; flex-direction: column; justify-content: space-between; }
+.project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+.t-chip {
+  font-size: 11px;
+  padding: 4px 10px;
+  border: 1px solid var(--cream);
+  color: var(--muted);
+  background: var(--paper);
+}
+.p-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.p-status .dot { width: 6px; height: 6px; border-radius: 50%; }
+.s-live .dot { background: var(--accent2); }
+.s-live { color: var(--accent2); }
+.s-complete .dot { background: var(--muted); }
+.s-complete { color: var(--muted); }
+.s-building .dot { background: var(--accent); animation: blink 1.5s infinite; }
+.s-building { color: var(--accent); }
+.p-link {
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--faint);
+  padding-bottom: 4px;
+  transition: all .2s;
+  align-self: flex-start;
+}
+.p-link:hover { color: var(--accent); border-color: var(--accent); }
+.p-link.dim { opacity: .35; pointer-events: none; }
+
+/* ── ABOUT ─────────────────────────────────── */
+#about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--cream);
+}
+.about-left {
+  padding: 80px 6vw;
+  border-right: 1px solid var(--cream);
+}
+.about-right { padding: 80px 6vw; }
+.about-label {
+  font-size: 11px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.about-label::before { content:''; width:24px;height:1px;background:var(--faint); }
+.about-body p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.about-body p:first-child {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.2vw, 26px);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.4;
+  margin-bottom: 28px;
+}
+.about-body strong { color: var(--ink); font-weight: 500; }
+.timeline { list-style: none; }
+.tl-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 20px;
+  padding: 20px 0;
+  border-top: 1px solid var(--cream);
+}
+.tl-item:last-child { border-bottom: 1px solid var(--cream); }
+.tl-period { font-size: 11px; color: var(--faint); padding-top: 3px; line-height: 1.4; }
+.tl-body {}
+.tl-role { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+.tl-company { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.tl-highlight { font-size: 12px; color: var(--muted); line-height: 1.5; font-style: italic; }
+
+/* ── SKILLS ─────────────────────────────────── */
+#skills {
+  padding: 80px 6vw;
+  border-bottom: 1px solid var(--cream);
+}
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px;
+  margin-top: 48px;
+}
+.skill-group-label {
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--cream);
+}
+.skill-item {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 7px 0;
+  border-bottom: 1px solid var(--paper2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color .15s;
+}
+.skill-item::before { content:'—'; color: var(--faint); font-size: 11px; }
+.skill-item:hover { color: var(--ink); }
+.skill-item:hover::before { color: var(--accent); }
+
+/* ── CONTACT ─────────────────────────────────── */
+#contact {
+  min-height: 60vh;
+  padding: 100px 6vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--cream);
+}
+.contact-top { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.contact-headline {
+  font-family: var(--serif);
+  font-size: clamp(36px, 6vw, 80px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+.contact-headline em { font-style: italic; color: var(--accent); }
+.contact-right {}
+.contact-pitch {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 36px;
+}
+.contact-pitch strong { color: var(--ink); font-weight: 500; }
+.contact-links { display: flex; flex-direction: column; gap: 12px; }
+.c-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border: 1px solid var(--cream);
+  text-decoration: none;
+  transition: all .2s;
+  background: var(--paper);
+}
+.c-link:hover { border-color: var(--ink); background: var(--ink); }
+.c-link:hover .c-link-label,
+.c-link:hover .c-link-value { color: var(--paper); }
+.c-link:hover .c-link-arrow { color: var(--accent); }
+.c-link-text {}
+.c-link-label { font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 3px; transition: color .2s; }
+.c-link-value { font-size: 14px; color: var(--ink); transition: color .2s; }
+.c-link-arrow { color: var(--faint); font-size: 18px; transition: color .2s; }
+.contact-slots {
+  margin-top: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: rgba(42,107,74,.06);
+  border: 1px solid rgba(42,107,74,.18);
+  font-size: 12px;
+  color: var(--accent2);
+}
+
+/* ── FOOTER ─────────────────────────────────── */
+footer {
+  padding: 28px 6vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--faint);
+  letter-spacing: .08em;
+}
+
+/* ── REVEAL ─────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.in { opacity: 1; transform: none; }
+
+/* ── SCROLLBAR ───────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb { background: var(--faint); }
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media(max-width: 900px) {
+  #proof { grid-template-columns: 1fr 1fr; }
+  .proof-cell { border-right: none; border-bottom: 1px solid var(--cream); }
+  .project { grid-template-columns: 1fr; }
+  .project-num { display: none; }
+  .project-left { border-right: none; border-bottom: 1px solid var(--cream); padding-right: 0; padding-bottom: 32px; margin-bottom: 32px; }
+  .project-right { padding-left: 0; }
+  #about { grid-template-columns: 1fr; }
+  .about-left { border-right: none; border-bottom: 1px solid var(--cream); }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .contact-top { grid-template-columns: 1fr; gap: 40px; }
+  .nav-links { display: none; }
+}
+@media(max-width: 600px) {
+  #proof { grid-template-columns: 1fr 1fr; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cur"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-name">
+    <span id="ln1"></span>
+    <span id="ln2"></span>
+  </div>
+  <div class="loader-sub" id="loader-sub"></div>
+  <div class="loader-bar-wrap"><div class="loader-bar" id="lbar"></div></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav" >
+  <a href="#hero" class="nav-logo" id="nav-logo"></a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="avail-badge" id="avail-badge"></div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-eyebrow" id="hero-eyebrow"></div>
+  <h1 class="hero-headline" id="hero-headline"></h1>
+  <p class="hero-sub" id="hero-sub"></p>
+  <div class="hero-actions">
+    <a href="#work" class="btn btn-fill">Selected Work →</a>
+    <a class="btn btn-out" id="hero-email" href="#">Get in touch</a>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-tick"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<div id="proof"></div>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-header">
+    <span class="section-label">Selected Work</span>
+    <span class="section-count" id="work-count"></span>
+  </div>
+  <div id="projects-list"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left reveal">
+    <div class="about-label">About</div>
+    <div class="about-body" id="about-body"></div>
+  </div>
+  <div class="about-right reveal">
+    <div class="about-label">Experience</div>
+    <ul class="timeline" id="timeline"></ul>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="about-label" style="margin-bottom:0">Skills & Tools</div>
+  <div class="skills-grid" id="skills-grid"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-top reveal">
+    <div class="contact-headline" id="contact-hl"></div>
+    <div class="contact-right">
+      <p class="contact-pitch">Not a demo. Not a side project. <strong>Something that runs, scales, and works when it needs to.</strong> If that's what you're building, let's talk.</p>
+      <div class="contact-links" id="contact-links"></div>
+      <div class="contact-slots" id="contact-slots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span id="footer-l"></span>
+  <span id="footer-r"></span>
+</footer>
+
+<script>
+/* ── CURSOR ───────────────────── */
+const cur = document.getElementById('cur');
+let tx = 0, ty = 0, cx = 0, cy = 0;
+document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+(function tick() {
+  cx += (tx - cx) * .14;
+  cy += (ty - cy) * .14;
+  cur.style.left = cx + 'px';
+  cur.style.top = cy + 'px';
+  requestAnimationFrame(tick);
+})();
+function addCursorEffect(els, cls) {
+  els.forEach(el => {
+    el.addEventListener('mouseenter', () => cur.classList.add(cls));
+    el.addEventListener('mouseleave', () => cur.classList.remove(cls));
+  });
+}
+
+/* ── LOADER ───────────────────── */
+function runLoader(cb) {
+  const names = ME.name.split(' ');
+  document.getElementById('ln1').textContent = names[0];
+  document.getElementById('ln2').textContent = names[1];
+  document.getElementById('loader-sub').textContent = ME.role + ' · ' + ME.location;
+  const bar = document.getElementById('lbar');
+
+  setTimeout(() => {
+    document.getElementById('ln1').classList.add('in');
+    document.getElementById('loader-sub').classList.add('in');
+  }, 100);
+  setTimeout(() => document.getElementById('ln2').classList.add('in'), 220);
+  setTimeout(() => { bar.style.width = '100%'; }, 300);
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('out');
+    setTimeout(cb, 700);
+  }, 2600);
+}
+
+/* ── COUNT UP ─────────────────── */
+function countUp(el, target, suffix, duration) {
+  const start = Date.now();
+  const isDecimal = target % 1 !== 0;
+  function update() {
+    const p = Math.min((Date.now() - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    const val = isDecimal ? (target * ease).toFixed(1) : Math.round(target * ease);
+    el.querySelector('.num').textContent = val;
+    if (p < 1) requestAnimationFrame(update);
+  }
+  update();
+}
+
+/* ── BUILD DOM ────────────────── */
+function build() {
+  const P = ME;
+
+  // NAV
+  document.getElementById('nav-logo').textContent = P.name.split(' ')[0] + '.';
+  const ab = document.getElementById('avail-badge');
+  ab.innerHTML = `<div class="avail-dot"></div>${P.available ? 'Available for work' : 'Not available'}`;
+
+  // HERO
+  document.getElementById('hero-eyebrow').textContent = P.role + ' — ' + P.location;
+  const hl = document.getElementById('hero-headline');
+  hl.innerHTML = P.headline.replace('Lagos bank', '<em>Lagos bank</em>');
+  document.getElementById('hero-sub').textContent = P.subheadline;
+  document.getElementById('hero-email').href = 'mailto:' + P.email;
+
+  // PROOF
+  const proof = document.getElementById('proof');
+  P.stats.forEach(s => {
+    proof.innerHTML += `<div class="proof-cell reveal">
+      <div class="proof-num"><span class="num">0</span><span class="suf">${s.suffix}</span></div>
+      <div class="proof-label">${s.label}</div>
+    </div>`;
+  });
+
+  // PROJECTS
+  const pl = document.getElementById('projects-list');
+  document.getElementById('work-count').textContent = P.projects.length + ' projects';
+  P.projects.forEach(p => {
+    const liveBtn = p.live
+      ? `<a class="p-link" href="${p.live}" target="_blank">↗ View Live</a>`
+      : `<span class="p-link dim">↗ View Live</span>`;
+    pl.innerHTML += `
+    <div class="project reveal">
+      <div class="project-num">${p.num}</div>
+      <div class="project-left">
+        <h2 class="project-name">${p.name}</h2>
+        <div class="project-story">
+          <div class="story-row">
+            <span class="story-tag problem">Problem</span>
+            <span class="story-text">${p.problem}</span>
+          </div>
+          <div class="story-row">
+            <span class="story-tag">Solution</span>
+            <span class="story-text">${p.solution}</span>
+          </div>
+          <div class="story-row">
+            <span class="story-tag result">Result</span>
+            <span class="story-text"><strong>${p.result}</strong></span>
+          </div>
+        </div>
+      </div>
+      <div class="project-right">
+        <div>
+          <div class="p-status s-${p.status}"><span class="dot"></span>${{live:'Live',complete:'Complete',building:'In Progress'}[p.status]}</div>
+          <div class="project-tech">${p.tech.map(t=>`<span class="t-chip">${t}</span>`).join('')}</div>
+        </div>
+        ${liveBtn}
+      </div>
+    </div>`;
+  });
+
+  // ABOUT
+  const ab2 = document.getElementById('about-body');
+  P.about.forEach((para, i) => {
+    const tag = i === 0 ? 'p' : 'p';
+    ab2.innerHTML += `<${tag}>${para}</${tag}>`;
+  });
+
+  // TIMELINE
+  const tl = document.getElementById('timeline');
+  P.experience.forEach(e => {
+    tl.innerHTML += `<li class="tl-item">
+      <div class="tl-period">${e.period}</div>
+      <div class="tl-body">
+        <div class="tl-role">${e.role}</div>
+        <div class="tl-company">${e.company} · ${e.location}</div>
+        <div class="tl-highlight">${e.highlight}</div>
+      </div>
+    </li>`;
+  });
+
+  // SKILLS
+  const sg = document.getElementById('skills-grid');
+  Object.entries(P.skills).forEach(([group, items]) => {
+    sg.innerHTML += `<div class="skill-group reveal">
+      <div class="skill-group-label">${group}</div>
+      ${items.map(s => `<div class="skill-item">${s}</div>`).join('')}
+    </div>`;
+  });
+
+  // CONTACT
+  document.getElementById('contact-hl').innerHTML = `Let's build<br>something<br><em>real.</em>`;
+  const cl = document.getElementById('contact-links');
+  [
+    { label:'Email', value: P.email, href:`mailto:${P.email}` },
+    { label:'GitHub', value: P.github.replace('https://',''), href: P.github },
+    { label:'WhatsApp', value: P.whatsapp, href:`https://wa.me/${P.whatsapp.replace(/\D/g,'')}` }
+  ].forEach(c => {
+    cl.innerHTML += `<a class="c-link" href="${c.href}" target="_blank">
+      <div class="c-link-text">
+        <span class="c-link-label">${c.label}</span>
+        <span class="c-link-value">${c.value}</span>
+      </div>
+      <span class="c-link-arrow">↗</span>
+    </a>`;
+  });
+  document.getElementById('contact-slots').innerHTML = `<div class="avail-dot"></div> Currently available — ${P.availableSlots} remote slots open`;
+
+  // FOOTER
+  document.getElementById('footer-l').textContent = P.name + ' · ' + new Date().getFullYear();
+  document.getElementById('footer-r').textContent = 'Lagos, Nigeria';
+
+  // cursor effects
+  setTimeout(() => {
+    addCursorEffect(document.querySelectorAll('a, button'), 'big');
+    addCursorEffect(document.querySelectorAll('p, .story-text, .about-body'), 'text-mode');
+  }, 100);
+}
+
+/* ── REVEAL ON SCROLL ─────────── */
+function initReveal() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        // count up for proof cells
+        if (e.target.classList.contains('proof-cell')) {
+          const idx = [...e.target.parentElement.children].indexOf(e.target);
+          const stat = ME.stats[idx];
+          countUp(e.target, stat.value, stat.suffix, 1200);
+        }
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+}
+
+/* ── INIT ─────────────────────── */
+build();
+runLoader(() => {
+  document.getElementById('nav').classList.add('show');
+  initReveal();
+});
+</script>
+</body>
+</html>
