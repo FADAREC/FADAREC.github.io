@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="robots" content="index, follow"/>
+<meta property="og:title" content="Caleb Fadare — Backend Engineer"/>
+<meta property="og:description" content="Backend engineer building production systems. Lagos, Nigeria. Available for remote work."/>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Caleb Fadare — Backend Engineer</title>
@@ -21,17 +24,17 @@ const ME = {
   email: "caleb001f@gmail.com",
   github: "https://github.com/FADAREC",
   whatsapp: "+234 903 197 0846",
-  headline: "I wrote automation that still runs at a Lagos bank today.",
-  subheadline: "I can do the same for you.",
+  headline: "I build backend systems that run in production,",
+  subheadline: "not just on localhost.",
   about: [
     "If you need someone to build a proof of concept, there are faster options.",
     "If you need production-grade systems that handle real users, real data, and real pressure — read on.",
-    "I started with C and shell scripting at ALX Africa, learning how systems work at the level most developers never go. Interned at Investment One Financial Services and built automation that's still running there today. I've shipped a full laundry management platform, an e-commerce POS, a printer monitoring system, and I'm currently building a mobile invoicing app in Go.",
+    "I started with C and shell scripting at ALX Africa, learning how systems work at the level most developers never go. Interned at Investment One Financial Services building enterprise backend services and started a Python automation tool for toner monitoring — which I later completed independently as TonerTrack. I've shipped a full laundry management platform, an e-commerce POS, a printer monitoring system, and I'm currently building a mobile invoicing app in Go.",
     "I understand deadlines, enterprise environments, and what it means when your code fails at 2am."
   ],
   stats: [
-    { value: 80, suffix: "%", label: "Manual ops cut for businesses handling fleets of printers" },
-    { value: 4, suffix: "", label: "Live systems in production right now" },
+    { value: 80, suffix: "%", label: "Reduction in manual monitoring work which is the core goal TonerTrack was built to solve" },
+    { value: 3, suffix: "", label: "Fully deployed systems running live right now" },
     { value: 2, suffix: "+", label: "Years of real production experience" },
     { value: 6, suffix: "", label: "Projects shipped end-to-end" }
   ],
@@ -207,7 +210,8 @@ body {
 nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
-  background-color: #322;
+  background-color: rgba(245, 240, 232, 0.95);
+  backdrop-filter: blur(12px);
   padding: 20px 6vw;
   display: flex;
   justify-content: space-between;
