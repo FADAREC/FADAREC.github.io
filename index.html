@@ -210,14 +210,16 @@ body {
 nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
-  background-color: rgba(245, 240, 232, 0.95);
-  backdrop-filter: blur(12px);
   padding: 20px 6vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   opacity: 0;
   transition: opacity .5s ease;
+  background-color: rgba(245, 240, 232, 0.40);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 nav.show { opacity: 1; }
 .nav-logo {
